@@ -1,0 +1,52 @@
+<form #form="ngForm" (ngSubmit)="create()" enctype="multipart/form-data">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-white text-center">Create Product</h1>
+        <hr />
+        <div class="row">
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;">Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" [(ngModel)]="product.name" name="name" />
+                <span name="name"  class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;">Category Name</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" [(ngModel)]="product.categoryName" name="categoryName" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;">Description</label>
+            </div>
+            <div class="col-10 pb-3">
+                <textarea class="form-control" rows="5" [(ngModel)]="product.description" name="description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;">Price</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input class="form-control" [(ngModel)]="product.price" name="price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label class="control-label pt-2" style="font-size:20px;">ImageUrl</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input type="file" name="image" class="form-control" (change)="onFileChange($event)" />
+                <input name="imageUrl" [(ngModel)]="product.imageUrl" hidden class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="col-5 offset-2">
+
+                <a class="btn-primary btn form-control " routerLink="/products">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Create" class="btn btn-success form-control" />
+            </div>
+        </div>
+    </div>
+</form>
